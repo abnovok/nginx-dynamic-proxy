@@ -1,2 +1,21 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+# 1. Поведение по умолчанию: Git сам определяет текстовые файлы и нормализует их к LF при коммите
+* text=auto
+
+# 2. КРИТИЧЕСКИ ВАЖНО ДЛЯ DEVOPS: принудительно используем LF (минуя настройки системы)
+# Это гарантирует, что скрипты и конфиги внутри Docker не словят ошибку из-за Windows-переносов строк (\r)
+*.sh text eol=lf
+*.conf text eol=lf
+*.template text eol=lf
+Dockerfile text eol=lf
+docker-compose.yml text eol=lf
+
+# 3. Нормализация исходного кода бэкендов
+*.py text
+*.go text
+
+# 4. Документация и разметка
+*.md text
+.gitignore text
+.gitattributes text
