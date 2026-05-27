@@ -53,3 +53,8 @@ nginx-dynamic-proxy/
 1. Разворачиваем стенд (по умолчанию активирован бэкенд на Python):     docker compose up -d  ; 
 2. Проверяем статус контейнеров:        docker compose ps --no-trunc  ;
 3. Запускаем тест-скрипт:            ./scripts/test.sh            (скрипт должен быть исполняемым -  chmod +x scripts/test.sh).
+
+
+🔄 Как переключить бэкенд на Go:
+1. в docker-compose.yml , В секции сервиса nginx-3 замените переменную окружения NEXT_HOP:            - NEXT_HOP=app-go:8080    ;
+3. перезапусть стенд:              docker compose up -d  .
